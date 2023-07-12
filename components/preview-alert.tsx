@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 export function PreviewAlert() {
   const { isPreview } = useRouter()
@@ -18,9 +19,9 @@ export function PreviewAlert() {
       <p className="mb-0">
         This page is a preview.{" "}
         {/* eslint-disable @next/next/no-html-link-for-pages */}
-        <a href="/api/exit-preview" className="text-white underline">
+        <Link href="/api/exit-preview" className="text-white underline">
           Click here
-        </a>{" "}
+        </Link>{" "}
         to exit preview mode.
       </p>
     </div>

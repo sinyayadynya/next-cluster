@@ -30,10 +30,12 @@ export function DrupalEntity({ entity, ...props }: DrupalEntityProps) {
     case "node":
       const node = entity as DrupalNode;
       return (
-        <Link href={node.path.alias} passHref>
-          <a className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600">
+        <Link
+            href={node.path.alias}
+            passHref
+            className="underline text-sky-600 hover:text-sky-800 visited:text-sky-600"
+        >
             {node.title}
-          </a>
         </Link>
       );
 

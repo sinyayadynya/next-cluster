@@ -9,7 +9,7 @@ interface NodeEventProps {
 export function NodeEvent({ node, ...props }: NodeEventProps) {
   return (
     <article {...props}>
-      <h1 className="mb-4 text-6xl">{node.title}</h1>
+      <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{node.title}</h1>
 
       <section>
         <h2 className="mb-2 text-4xl">General information</h2>
@@ -65,7 +65,7 @@ export function NodeEvent({ node, ...props }: NodeEventProps) {
           </div>
         )}
 
-        {node.organizer && (
+        {/* {node.organizer && (
           <div className="mb-4">
             <h3 className="mb-1 text-2xl">Organizers</h3>
             <div>
@@ -74,7 +74,7 @@ export function NodeEvent({ node, ...props }: NodeEventProps) {
               ))}
             </div>
           </div>
-        )}
+        )} */}
 
         {node.performer && (
           <div className="mb-4">

@@ -15,9 +15,9 @@ export function NodeArticleTeaser({ node, ...props }: NodeArticleTeaserProps) {
             <Link
                 href={node.path.alias}
                 passHref
-                className="no-underline hover:text-blue-600"
+                className="no-underline text-gray-900 hover:text-sky-600"
             >
-                <h2 className="mb-4 text-4xl font-bold">{node.title}</h2>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{node.title}</h2>
             </Link>
             <div className="mb-4 text-gray-600">
                 {node.uid?.display_name ? (
@@ -30,7 +30,7 @@ export function NodeArticleTeaser({ node, ...props }: NodeArticleTeaserProps) {
                 ) : null}
                 <span> - {formatDate(node.created)}</span>
             </div>
-            {node.image && (
+            {/* {node.image && (
                 <figure className="my-4">
                     <Image
                         src={absoluteUrl(node.image.uri.url)}
@@ -39,7 +39,11 @@ export function NodeArticleTeaser({ node, ...props }: NodeArticleTeaserProps) {
                         alt={node.field_image.resourceIdObjMeta.alt}
                     />
                 </figure>
-            )}
+            )} */}
+
+{node.image.href}
+
+
             <Link
                 href={node.path.alias}
                 passHref

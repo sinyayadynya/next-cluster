@@ -14,14 +14,14 @@ export function Layout({ children }) {
                 passHref
                 className="text-2xl font-semibold no-underline"
             >
-                Next.js for Drupal
+                Cluster
             </Link>
             <Link
                 href="https://next-drupal.org/docs"
                 passHref
                 target="_blank"
                 rel="external"
-                className="hover:text-blue-600"
+                className="hover:text-sky-600"
             >
                 Read the docs
             </Link>

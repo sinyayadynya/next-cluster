@@ -10,13 +10,13 @@ interface NodeArticleProps {
 export function NodeArticle({ node, ...props }: NodeArticleProps) {
     return (
         <article {...props}>
-            <h1 className="mb-4 text-6xl">{node.title}</h1>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{node.title}</h1>
 
-            <section>
-                <h2 className="mb-2 text-4xl">General information</h2>
+            <section className='mt-8 space-y-4'>
+                <h2 className="text-lg font-semibold tracking-tight text-gray-900">General information</h2>
 
                 {node.article_body?.processed && (
-                    <div className="mb-4">
+                    <div className="mb-4 prose">
                         <FormattedText
                             processed={node.article_body.processed}
                         />
@@ -25,21 +25,21 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
 
                 {node.subtype && (
                     <div className="mb-4">
-                        <h3 className="mb-1 text-2xl">Subtype</h3>
+                        <h3 className="mb-1 text-lg">Subtype</h3>
                         <div>{node.subtype}</div>
                     </div>
                 )}
 
                 {node.author && (
                     <div className="mb-4">
-                        <h3 className="mb-1 text-2xl">Author</h3>
+                        <h3 className="mb-1 text-lg">Author</h3>
                         <DrupalEntity entity={node.author} />
                     </div>
                 )}
             </section>
 
             <section>
-                <h2 className="mb-2 text-4xl">Media/Assets</h2>
+                <h2 className="text-lg font-semibold tracking-tight text-gray-900">Media/Assets</h2>
 
                 {node.image && (
                     <div className="mb-4">
@@ -49,11 +49,11 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
             </section>
 
             <section>
-                <h2 className="mb-2 text-4xl">Meta data</h2>
+                <h2 className="text-lg font-semibold tracking-tight text-gray-900">Meta data</h2>
 
                 {node.keywords && (
                     <div className="mb-4">
-                        <h3 className="mb-1 text-2xl">Tags</h3>
+                        <h3 className="mb-1 text-lg">Tags</h3>
                         <div>
                             {node.keywords.map((item, i) => (
                                 <DrupalEntity key={i} entity={item} />

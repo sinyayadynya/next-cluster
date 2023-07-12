@@ -1,6 +1,7 @@
 import { DrupalNode } from "next-drupal";
 import { FormattedText } from "components/formatted-text";
 import { DrupalEntity } from "components/entity";
+import Link from "next/link";
 
 interface NodePageProps {
   node: DrupalNode;
@@ -9,7 +10,7 @@ interface NodePageProps {
 export function NodePage({ node, ...props }: NodePageProps) {
   return (
     <article {...props}>
-      <h1 className="mb-4 text-6xl">{node.title}</h1>
+      <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{node.title}</h1>
 
       <section>
         <h2 className="mb-2 text-4xl">General information</h2>
@@ -48,12 +49,12 @@ export function NodePage({ node, ...props }: NodePageProps) {
             <div>
               {node.related_link.map((item, i) => (
                 <div key={i}>
-                  <a
-                    className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                  <Link
+                    className="underline text-sky-600 hover:text-sky-800 visited:text-sky-600"
                     href={item.uri}
                   >
                     {item.title || item.uri}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -66,12 +67,12 @@ export function NodePage({ node, ...props }: NodePageProps) {
             <div>
               {node.significant_link.map((item, i) => (
                 <div key={i}>
-                  <a
-                    className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
+                  <Link
+                    className="underline text-sky-600 hover:text-sky-800 visited:text-sky-600"
                     href={item.uri}
                   >
                     {item.title || item.uri}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>

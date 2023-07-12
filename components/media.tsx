@@ -1,8 +1,8 @@
-import * as React from "react";
 import { DrupalMedia } from "next-drupal";
 
 import { MediaAudio } from "components/media--audio";
 import { MediaDocument } from "components/media--document";
+import { MediaLegislationObject } from "components/media--legislation_object";
 import { MediaImage } from "components/media--image";
 import { MediaRemoteVideo } from "components/media--remote_video";
 import { MediaVideo } from "components/media--video";
@@ -17,8 +17,14 @@ export function Media({ resource }: MediaPageProps) {
     case "media--audio":
       return <MediaAudio media={resource} />;
 
+    case "media--data_download":
+        return <MediaDocument media={resource} />;
+
     case "media--document":
       return <MediaDocument media={resource} />;
+
+    case "media--legislation_object":
+        return <MediaLegislationObject media={resource} />;
 
     case "media--image":
       return <MediaImage media={resource} />;
