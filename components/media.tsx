@@ -3,7 +3,7 @@ import { DrupalMedia } from "next-drupal";
 import { MediaAudio } from "components/media--audio";
 import { MediaDocument } from "components/media--document";
 import { MediaLegislationObject } from "components/media--legislation_object";
-import { MediaImage } from "components/media--image";
+import MediaImage from "components/media--image";
 import { MediaRemoteVideo } from "components/media--remote_video";
 import { MediaVideo } from "components/media--video";
 import { DrupalEntity } from "components/entity";

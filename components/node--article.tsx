@@ -1,6 +1,6 @@
 import { DrupalNode } from 'next-drupal';
 import { FormattedText } from 'components/formatted-text';
-import { DrupalImage } from 'components/image';
+import MediaImage from 'components/media--image';
 import { DrupalEntity } from 'components/entity';
 
 interface NodeArticleProps {
@@ -42,9 +42,9 @@ export function NodeArticle({ node, ...props }: NodeArticleProps) {
                 <h2 className="text-lg font-semibold tracking-tight text-gray-900">Media/Assets</h2>
 
                 {node.image && (
-                    <div className="mb-4">
-                        <DrupalImage image={node.image} />
-                    </div>
+                <div className="mb-4">
+                    <MediaImage media={node.image} />
+                </div>
                 )}
             </section>
 
