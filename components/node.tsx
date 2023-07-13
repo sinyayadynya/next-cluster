@@ -54,7 +54,7 @@ export const RESOURCE_INCLUDES = {
     'node--project':
         'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
     'node--report':
-        'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
+        'uid,image,image.uid,image.thumbnail,image.image,keywords',
 };
 
 interface NodePageProps {
