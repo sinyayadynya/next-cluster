@@ -1,10 +1,73 @@
-import { DrupalNode } from "next-drupal";
-import { FormattedText } from "components/formatted-text";
-import { DrupalEntity } from "components/entity";
-import Link from "next/link";
+import { DrupalNode } from 'next-drupal';
+import { FormattedText } from 'components/formatted-text';
+import { DrupalEntity } from 'components/entity';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { useEffect, useState } from 'react';
 
 interface NodeOrganizationProps {
-  node: DrupalNode;
+    node: DrupalNode;
+}
+
+interface OrganizationProps {
+    entity: {
+        title: string;
+        logo?: {
+            id: string;
+        };
+    };
+}
+
+export function OrganizationHeader({
+    entity,
+}: OrganizationProps) {
+    const [logoData, setLogoData] = useState<any>(null);
+    const [imageUrl, setImageUrl] = useState(null);
+
+    useEffect(() => {
+        if (entity.logo) {
+            fetch(
+                `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/jsonapi/media/image/${entity.logo.id}`
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('logoData:', data);
+                    console.log('logoData.data:', data.data);
+                    console.log(
+                        'logoData.data.relationships.image:',
+                        data.data.relationships.image
+                    );
+                    setLogoData(data);
+                    if (data.data.relationships.image.links.related) {
+                        fetch(data.data.relationships.image.links.related.href)
+                            .then((response) => response.json())
+                            .then((imageData) => {
+                                console.log('imageData:', imageData);
+                                setImageUrl(
+                                    `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${imageData.data.attributes.uri.url}`
+                                );
+                            });
+                    }
+                });
+        }
+    }, [entity.logo]);
+
+    return (
+        <div className='my-3 flex space-x-8 items-center'>
+            {imageUrl && (
+                <Image
+                    src={imageUrl}
+                    alt={entity.title}
+                    width={400}
+                    height={400}
+                    className="w-auto h-20"
+                />
+            )}
+
+            <h3 className='text-2xl font-bold tracking-tight text-slate-900'>{entity.title}</h3>
+        </div>
+    );
 }
 
 export function NodeOrganization({ node, ...props }: NodeOrganizationProps) {
