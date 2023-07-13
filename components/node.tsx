@@ -4,6 +4,7 @@ import { DrupalNode } from 'next-drupal';
 import { NodeAdministrativeArea } from 'components/node--administrative_area';
 import { NodeArticle } from 'components/node--article';
 import { NodeCountry } from 'components/node--country';
+import { NodeCreativeWork } from 'components/node--creative_work';
 import { NodeEvent } from 'components/node--event';
 import { NodeGovernmentOrganization } from 'components/node--government_organization';
 import { NodeLegislation } from 'components/node--legislation';
@@ -11,6 +12,7 @@ import { NodeOrganization } from 'components/node--organization';
 import { NodePage } from 'components/node--page';
 import { NodePerson } from 'components/node--person';
 import { NodePlace } from 'components/node--place';
+import { NodeProject } from 'components/node--project';
 import { NodeReport } from 'components/node--report';
 import { DrupalEntity } from 'components/entity';
 
@@ -18,6 +20,7 @@ export const RESOURCE_TYPES = [
     'node--administrative_area',
     'node--article',
     'node--country',
+    'node--creative_work',
     'node--event',
     'node--government_organization',
     'node--legislation',
@@ -25,6 +28,7 @@ export const RESOURCE_TYPES = [
     'node--page',
     'node--person',
     'node--place',
+    'node--project',
     'node--report',
 ];
 
@@ -34,6 +38,8 @@ export const RESOURCE_INCLUDES = {
     'node--article':
         'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
     'node--country':
+        'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
+    'node--creative_work':
         'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
     'node--event':
         'uid,image,image.uid,image.thumbnail,image.image,location,location.uid,location.image,organizer,organizer.uid,organizer.image,performer,performer.uid,performer.image',
@@ -45,6 +51,10 @@ export const RESOURCE_INCLUDES = {
         'uid,primary_image_of_page,primary_image_of_page.uid,primary_image_of_page.thumbnail,primary_image_of_page.image',
     'node--person': 'uid,image,image.uid,image.thumbnail,image.image',
     'node--place': 'uid,image,image.uid,image.thumbnail,image.image',
+    'node--project':
+        'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
+    'node--report':
+        'uid,image,image.uid,image.thumbnail,image.image,keywords,author,author.uid,author.image',
 };
 
 interface NodePageProps {
@@ -61,6 +71,9 @@ export function Node({ resource }: NodePageProps) {
 
         case 'node--country':
             return <NodeCountry node={resource} />;
+
+        case 'node--creative_work':
+            return <NodeCreativeWork node={resource} />;
 
         case 'node--event':
             return <NodeEvent node={resource} />;
@@ -82,6 +95,9 @@ export function Node({ resource }: NodePageProps) {
 
         case 'node--place':
             return <NodePlace node={resource} />;
+
+        case 'node--project':
+            return <NodeProject node={resource} />;
 
         case 'node--report':
             return <NodeReport node={resource} />;
